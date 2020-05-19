@@ -42,7 +42,9 @@ function initViz() {
  */
 function processFilters(worksheets) {
     getFilters(worksheets).then(allFilters => {
-        filters = allFilters.flat();
+        let filters = [];
+        //filters = allFilters.flat();
+        filters = allFilters.reduce((acc, val) => acc.concat(val), [])
         filters = removeDuplicates(filters);
         displayFilterValues(filters);
     });
